@@ -20,7 +20,7 @@ This is my personal Neovim configuration, designed to be both aesthetically plea
 
 Before you begin, make sure you have the following installed:
 
-  * **Neovim v0.9.0+**
+  * **Neovim v0.10.0+**
   * **A Nerd Font:** This is required for all the icons to render correctly. I recommend [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads) or [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads).
   * **Git:** For cloning the repository and managing plugins.
   * **A C Compiler:** For compiling some plugins (e.g., `gcc` on Linux, `Xcode Command Line Tools` on macOS).
