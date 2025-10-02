@@ -50,7 +50,7 @@ The signature transparent and blurred look is **not** handled by Neovim itself. 
 
     ```bash
     # Replace with your GitHub repository URL
-    git clone https://github.com/Bimbok/nvim.git ~/.config/nvim
+    git clone https://github.com/Bimbok/nvim.git ~/.config/
     ```
 
 3.  **Launch Neovim:**
