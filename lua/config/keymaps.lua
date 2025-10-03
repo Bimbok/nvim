@@ -2,14 +2,14 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- Map Ctrl+B to toggle tree
-vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+-- Map <leader>ee to toggle tree
+vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
--- Open Terminal Horizontal by Ctrl+j
+-- Open Terminal Horizontal by <leader>jj
 local terminal_buf = nil
 local terminal_win = nil
 
-vim.keymap.set("n", "<C-j>", function()
+vim.keymap.set("n", "<leader>tt", function()
   if
     terminal_buf
     and vim.api.nvim_buf_is_valid(terminal_buf)
@@ -32,18 +32,18 @@ vim.keymap.set("n", "<C-j>", function()
   end
 end, { desc = "Toggle terminal in split" })
 
--- run current file by ctrl + r
-vim.keymap.set("n", "<C-r>", RunCurrentFile, { noremap = true, silent = true })
+-- run current file by <leader>rr
+vim.keymap.set("n", "<leader>rr", RunCurrentFile, { noremap = true, silent = true })
 
 -- save ne file and save it by ctrl + n and ctrl + s.
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- ctrl + n → new empty buffer
-map("n", "<C-n>", ":enew<CR>", opts)
+-- <leader>nn → new empty buffer
+map("n", "<leader>nn", ":enew<CR>", opts)
 
--- ctrl + s → save in normal mode (prompt for filename if new file)
-map("n", "<C-s>", function()
+--  <leader>ss → save in normal mode (prompt for filename if new file)
+map("n", "<leader>ss", function()
   if vim.bo.modified then
     if vim.fn.expand("%") == "" then
       vim.cmd("saveas " .. vim.fn.input("Save as: "))
@@ -53,22 +53,10 @@ map("n", "<C-s>", function()
   end
 end, opts)
 
--- ctrl + s → save in insert mode
-map("i", "<C-s>", function()
-  vim.cmd("stopinsert")
-  if vim.bo.modified then
-    if vim.fn.expand("%") == "" then
-      vim.cmd("saveas " .. vim.fn.input("Save as: "))
-    else
-      vim.cmd("write")
-    end
-  end
-end, opts)
-
--- by using ctrl + f malual formatting.
-vim.keymap.set("n", "<C-f>", function()
+-- by using <leader>jj malual formatting.
+vim.keymap.set("n", "<leader>jj", function()
   require("conform").format({ async = true, lsp_fallback = true, timeout_ms = 1000 })
-  vim.notify("Formatted with Ctrl+F 🚀", vim.log.levels.INFO)
+  vim.notify("For fomatted with <leader>jj 🚀", vim.log.levels.INFO)
 end, { desc = "Manual format" })
 
 -- java
