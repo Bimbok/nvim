@@ -3,7 +3,6 @@ require("config.lazy")
 
 require("lazy").setup({
   -- Your existing plugins...
-  { import = "plugins/bash" },
 })
 
 function RunCurrentFile()
