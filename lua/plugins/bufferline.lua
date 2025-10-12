@@ -15,6 +15,10 @@ return {
   },
   opts = {
     options = {
+      separator_style = { "", "" }, -- Use Nerd Font icons for rounded tabs
+      indicator = {
+        style = "underline", -- Use an underline for the active tab indicator
+      },
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore

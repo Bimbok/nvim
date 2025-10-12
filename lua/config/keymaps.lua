@@ -7,10 +7,6 @@ vim.keymap.set("n", "<leader>ee", function()
   vim.cmd("Neotree toggle right")
 end, { desc = "Toggle Neo-tree" })
 
-vim.keymap.set("n", "<leader>gg", function()
-  vim.cmd("Neotree toggle git_status right")
-end, { desc = "Toggle Neo-tree Git status" })
-
 -- Open Terminal Horizontal by <leader>jj
 local terminal_buf = nil
 local terminal_win = nil
