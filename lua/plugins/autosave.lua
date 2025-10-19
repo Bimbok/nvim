@@ -4,7 +4,9 @@ return {
   opts = {
     enabled = true,
     execution_message = {
-      message = function() return "" end, -- disable save message
+      message = function()
+        return ""
+      end, -- disable save message
     },
     debounce_delay = 135,
     condition = function(buf)
@@ -15,5 +17,3 @@ return {
     end,
   },
 }
-
-
