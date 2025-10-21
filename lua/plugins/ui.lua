@@ -126,4 +126,19 @@ return {
       lazy = false, -- neo-tree will lazily load itself
     },
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      -- This is the setting you want!
+      current_line_blame = true, -- Toggle blame information on the current line
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- 'eol' (end of line) or 'overlay'
+        delay = 500, -- Wait 500ms before showing blame
+        ignore_whitespace = false,
+      },
+      -- This formats the text just like you described
+      current_line_blame_formatter = " <author>, <author_time:%R> • <summary:-(40)>",
+    },
+  },
 }
