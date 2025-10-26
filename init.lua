@@ -17,6 +17,17 @@ function RunCurrentFile()
     cmd = string.format("g++ '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
   elseif ext == "py" then
     cmd = string.format("python3 '%s'", file)
+  elseif ext == "js" then
+    cmd = string.format("node '%s'", file)
+  elseif ext == "asm" then
+    cmd = string.format(
+      "nasm -f elf64 '%s' -o /tmp/%s.o && ld /tmp/%s.o -o /tmp/%s && /tmp/%s",
+      file,
+      filename,
+      filename,
+      filename,
+      filename
+    )
   else
     vim.notify("Unsupported file type: " .. ext, vim.log.levels.ERROR)
     return

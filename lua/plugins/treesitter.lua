@@ -26,6 +26,7 @@ return {
       "bash",
       "c",
       "cpp",
+      "asm",
       "diff",
       "html",
       "javascript",
