@@ -4,6 +4,7 @@ return {
     servers = {
       bashls = {},
       clangd = {},
+      lua_ls = {},
     },
   },
 }

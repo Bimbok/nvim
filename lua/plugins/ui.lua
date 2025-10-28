@@ -1,21 +1,13 @@
 return {
   {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("bufferline").setup({})
-    end,
-  },
-  {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
   {
     "vyfor/cord.nvim",
-    build = ":Cord update", -- This will download the necessary server component
-    event = "VeryLazy", -- Load it after startup
-    -- opts = {} -- You can add configuration options here if you want
+    build = ":Cord update",
+    event = "VeryLazy",
+    -- opts = {}
   },
   { "github/copilot.vim" },
   {
@@ -27,62 +19,62 @@ return {
       stop_eof = true,
     },
   },
+
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   config = function()
+  --     vim.notify = require("notify")
+  --     require("notify").setup({
+  --       stages = "slide", -- or "slide", "static"
+  --       timeout = 3000,
+  --       background_colour = "#000000",
+  --     })
+  --   end,
+  -- },
   {
-    {
+    "folke/noice.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-      config = function()
-        vim.notify = require("notify")
-        require("notify").setup({
-          stages = "slide", -- or "slide", "static"
-          timeout = 3000,
-          background_colour = "#000000",
-        })
-      end,
     },
-    {
-      "folke/noice.nvim",
-      dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-      },
-      event = "VeryLazy",
-      config = function()
-        require("noice").setup({
-          lsp = {
-            progress = {
-              enabled = true,
-            },
-            signature = {
-              enabled = true,
-            },
-            hover = {
-              enabled = true,
-            },
-          },
-          messages = {
+    event = "VeryLazy",
+    config = function()
+      require("noice").setup({
+        lsp = {
+          progress = {
             enabled = true,
           },
-          notify = {
+          signature = {
             enabled = true,
           },
-          views = {
-            mini = {
-              win_options = {
-                winblend = 10,
-              },
+          hover = {
+            enabled = true,
+          },
+        },
+        messages = {
+          enabled = true,
+        },
+        notify = {
+          enabled = true,
+        },
+        views = {
+          mini = {
+            win_options = {
+              winblend = 10,
             },
           },
-          cmdline = {
-            enabled = true,
-            view = "cmdline_popup",
-          },
-          popupmenu = {
-            enabled = true,
-          },
-        })
-      end,
-    },
+        },
+        cmdline = {
+          enabled = true,
+          view = "cmdline_popup",
+        },
+        popupmenu = {
+          enabled = true,
+        },
+      })
+    end,
   },
+
   {
     {
       "akinsho/toggleterm.nvim",
@@ -140,5 +132,31 @@ return {
       -- This formats the text just like you described
       current_line_blame_formatter = " <author>, <author_time:%R> • <summary:-(40)>",
     },
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup(
+        -- 1st argument:
+        -- A list of filetypes to highlight.
+        -- '*' means all filetypes.
+        { "*" },
+
+        -- 2nd argument:
+        -- A table of default options.
+        {
+          -- This is the key from your docs to enable
+          -- all "normal" CSS colors: rgb(), hsl(), names, etc.
+          css = true,
+
+          -- This is the key for your original request
+          -- to enable Tailwind classes.
+          tailwind = true,
+
+          -- This sets the VS Code-like background style
+          mode = "background",
+        }
+      )
+    end,
   },
 }
