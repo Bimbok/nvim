@@ -28,6 +28,9 @@ function RunCurrentFile()
       filename,
       filename
     )
+  elseif ext == "rs" then
+    -- vvv ADDED THIS LINE FOR RUST vvv
+    cmd = string.format("rustc '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
   else
     vim.notify("Unsupported file type: " .. ext, vim.log.levels.ERROR)
     return

@@ -3,12 +3,12 @@ return {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
-  {
-    "vyfor/cord.nvim",
-    build = ":Cord update",
-    event = "VeryLazy",
-    -- opts = {}
-  },
+  -- {
+  --   "vyfor/cord.nvim",
+  --   build = ":Cord update",
+  --   event = "VeryLazy",
+  --   -- opts = {}
+  -- },
   { "github/copilot.vim" },
   {
     "karb94/neoscroll.nvim",
@@ -20,17 +20,6 @@ return {
     },
   },
 
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   config = function()
-  --     vim.notify = require("notify")
-  --     require("notify").setup({
-  --       stages = "slide", -- or "slide", "static"
-  --       timeout = 3000,
-  --       background_colour = "#000000",
-  --     })
-  --   end,
-  -- },
   {
     "folke/noice.nvim",
     dependencies = {
