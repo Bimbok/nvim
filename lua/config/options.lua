@@ -2,4 +2,4 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 --
-vim.opt.clipboard = "unnamedplus" -- Auto-disable wrapping for Markdown files to keep tables pretty
+vim.opt.clipboard = "unnamedplus"
