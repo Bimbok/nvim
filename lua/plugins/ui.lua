@@ -9,9 +9,10 @@ return {
   --   event = "VeryLazy",
   --   -- opts = {}
   -- },
-  { "github/copilot.vim" },
+  { "github/copilot.vim", event = "InsertEnter" },
   {
     "karb94/neoscroll.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- All these keys are optional, but this is a nice default
       easing_function = "quadratic", -- "linear", "quadratic", "cubic", "quintic"
@@ -104,14 +105,13 @@ return {
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons", -- optional, but recommended
       },
-      lazy = false, -- neo-tree will lazily load itself
     },
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
-      -- This is the setting you want!
-      current_line_blame = true, -- Toggle blame information on the current line
+      current_line_blame = true,
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol", -- 'eol' (end of line) or 'overlay'
@@ -124,28 +124,13 @@ return {
   },
   {
     "norcalli/nvim-colorizer.lua",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require("colorizer").setup(
-        -- 1st argument:
-        -- A list of filetypes to highlight.
-        -- '*' means all filetypes.
-        { "*" },
-
-        -- 2nd argument:
-        -- A table of default options.
-        {
-          -- This is the key from your docs to enable
-          -- all "normal" CSS colors: rgb(), hsl(), names, etc.
-          css = true,
-
-          -- This is the key for your original request
-          -- to enable Tailwind classes.
-          tailwind = true,
-
-          -- This sets the VS Code-like background style
-          mode = "background",
-        }
-      )
+      require("colorizer").setup({ "*" }, {
+        css = true,
+        tailwind = true,
+        mode = "background",
+      })
     end,
   },
 }

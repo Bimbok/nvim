@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 
 -- toggle neo-tree
-vim.keymap.set("n", "<leader>ee", function()
+vim.keymap.set("n", "<leader>\\", function()
   vim.cmd("Neotree toggle right")
 end, { desc = "Toggle Neo-tree" })
 
