@@ -1,10 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
-require("lazy").setup({
-  -- Your existing plugins...
-})
-
 function RunCurrentFile()
   local file = vim.fn.expand("%:p")
   local filename = vim.fn.expand("%:t:r") -- filename without extension
@@ -29,7 +25,6 @@ function RunCurrentFile()
       filename
     )
   elseif ext == "rs" then
-    -- vvv ADDED THIS LINE FOR RUST vvv
     cmd = string.format("rustc '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
   else
     vim.notify("Unsupported file type: " .. ext, vim.log.levels.ERROR)
