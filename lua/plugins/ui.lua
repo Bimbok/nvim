@@ -96,17 +96,17 @@ return {
       end,
     },
   },
-  {
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v3.x",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons", -- optional, but recommended
-      },
-    },
-  },
+  -- {
+  --   {
+  --     "nvim-neo-tree/neo-tree.nvim",
+  --     branch = "v3.x",
+  --     dependencies = {
+  --       "nvim-lua/plenary.nvim",
+  --       "MunifTanjim/nui.nvim",
+  --       "nvim-tree/nvim-web-devicons", -- optional, but recommended
+  --     },
+  --   },
+  -- },
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -131,6 +131,35 @@ return {
         tailwind = true,
         mode = "background",
       })
+    end,
+  },
+
+  {
+    "mikavilpas/yazi.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+
+    cmd = { "Yazi" },
+    keys = {
+      { "<leader>-", "<cmd>Yazi<cr>", desc = "Yazi (Current File)" },
+      { "<leader>cw", "<cmd>Yazi cwd<cr>", desc = "Yazi (Working Dir)" },
+      { "<c-up>", "<cmd>Yazi toggle<cr>", desc = "Resume Yazi" },
+    },
+
+    opts = {
+      -- (Replacing Neo-tree/Netrw completely)
+      open_for_directories = false,
+
+      keymaps = {
+        show_help = "<f1>",
+      },
+
+      floating_window_scaling_factor = 0.8,
+      yazi_floating_window_winblend = 0, -- 0 = Solid (Better for images)
+    },
+
+    init = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
     end,
   },
 }
