@@ -1,5 +1,4 @@
 return {
-  -- Add this to a new file or your plugins list
   {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
