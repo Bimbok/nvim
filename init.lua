@@ -15,6 +15,8 @@ function RunCurrentFile()
     cmd = string.format("python3 '%s'", file)
   elseif ext == "js" then
     cmd = string.format("node '%s'", file)
+  elseif ext == "java" then
+    cmd = string.format("java '%s'", file)
   elseif ext == "asm" then
     cmd = string.format(
       "nasm -f elf64 '%s' -o /tmp/%s.o && ld /tmp/%s.o -o /tmp/%s && /tmp/%s",

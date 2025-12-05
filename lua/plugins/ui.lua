@@ -15,7 +15,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- All these keys are optional, but this is a nice default
-      easing_function = "quadratic", -- "linear", "quadratic", "cubic", "quintic"
+      easing_function = "quintic", -- "linear", "quadratic", "cubic", "quintic"
       hide_cursor = true,
       stop_eof = true,
     },
@@ -213,5 +213,10 @@ return {
         style = "inline",
       },
     },
+  },
+  {
+    "chentoast/marks.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
   },
 }
