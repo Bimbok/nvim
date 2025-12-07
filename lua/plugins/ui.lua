@@ -9,7 +9,7 @@ return {
   --   event = "VeryLazy",
   --   -- opts = {}
   -- },
-  { "github/copilot.vim", event = "InsertEnter" },
+  -- { "github/copilot.vim", event = "InsertEnter" },
   {
     "karb94/neoscroll.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -154,8 +154,6 @@ return {
 
   {
     "folke/flash.nvim",
-    -- 🚀 OPTIMIZATION: Removed 'event = "VeryLazy"'.
-    -- Now it only loads when you press one of the keys below.
     keys = {
       {
         "s",
@@ -218,5 +216,35 @@ return {
     "chentoast/marks.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+    event = "VeryLazy",
+
+    opts = {
+      cursor_color = "#d3869b",
+      stiffness = 0.6,
+      trailing_stiffness = 0.5,
+      distance_stop_animating = 0.5,
+      hide_target_hack = false,
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = [[
+    ██████╗ ██╗███╗   ███╗██████╗  ██████╗ ██╗  ██╗
+    ██╔══██╗██║████╗ ████║██╔══██╗██╔═══██╗██║ ██╔╝
+    ██████╔╝██║██╔████╔██║██████╔╝██║   ██║█████╔╝ 
+    ██╔══██╗██║██║╚██╔╝██║██╔══██╗██║   ██║██╔═██╗ 
+    ██████╔╝██║██║ ╚═╝ ██║██████╔╝╚██████╔╝██║  ██╗
+    ╚═════╝ ╚═╝╚═╝     ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+        ]],
+        },
+      },
+    },
   },
 }
