@@ -3,12 +3,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
-  -- {
-  --   "vyfor/cord.nvim",
-  --   build = ":Cord update",
-  --   event = "VeryLazy",
-  --   -- opts = {}
-  -- },
   -- { "github/copilot.vim", event = "InsertEnter" },
   {
     "karb94/neoscroll.nvim",
@@ -135,7 +129,6 @@ return {
     },
 
     opts = {
-      -- (Replacing Neo-tree/Netrw completely)
       open_for_directories = false,
       highlight_hovered_buffers_in_same_window = true,
       keymaps = {
