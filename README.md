@@ -8,8 +8,8 @@ This config launches in **~28ms** (yep, fr).
 Only **7 plugins** load on startup — the rest load exactly when you need them.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3c6e5719-35d6-40b3-87b1-788e05992223" />
-  <img src="https://github.com/user-attachments/assets/d0d1dbff-10ec-4d1c-973a-fad97547a609" />
+  <img width="1400" height="800" alt="Image" src="https://github.com/user-attachments/assets/823d9fff-696b-41ff-8d5b-53403259a460" />
+  <img width="1400" height="800" alt="Image" src="https://github.com/user-attachments/assets/d47ad58c-bc82-4d30-a845-e86729310900" />
 </p>
 
 ---
