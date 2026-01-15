@@ -1,6 +1,8 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+vim.opt.clipboard = "unnamedplus"
+
 function RunCurrentFile()
   local file = vim.fn.expand("%:p")
   local filename = vim.fn.expand("%:t:r") -- filename without extension
@@ -17,6 +19,8 @@ function RunCurrentFile()
     cmd = string.format("node '%s'", file)
   elseif ext == "java" then
     cmd = string.format("java '%s'", file)
+  elseif ext == "sh" then
+    cmd = string.format("bash '%s'", file)
   elseif ext == "asm" then
     cmd = string.format(
       "nasm -f elf64 '%s' -o /tmp/%s.o && ld /tmp/%s.o -o /tmp/%s && /tmp/%s",

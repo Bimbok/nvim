@@ -3,7 +3,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
-  -- { "github/copilot.vim", event = "InsertEnter" },
+  { "github/copilot.vim", event = "InsertEnter" },
   {
     "karb94/neoscroll.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -229,14 +229,52 @@ return {
         enabled = true,
         preset = {
           header = [[
-    ██████╗ ██╗███╗   ███╗██████╗  ██████╗ ██╗  ██╗
-    ██╔══██╗██║████╗ ████║██╔══██╗██╔═══██╗██║ ██╔╝
-    ██████╔╝██║██╔████╔██║██████╔╝██║   ██║█████╔╝ 
-    ██╔══██╗██║██║╚██╔╝██║██╔══██╗██║   ██║██╔═██╗ 
-    ██████╔╝██║██║ ╚═╝ ██║██████╔╝╚██████╔╝██║  ██╗
-    ╚═════╝ ╚═╝╚═╝     ╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+ █████      ███                  █████              █████     
+▒▒███      ▒▒▒                  ▒▒███              ▒▒███      
+ ▒███████  ████  █████████████   ▒███████   ██████  ▒███ █████
+ ▒███▒▒███▒▒███ ▒▒███▒▒███▒▒███  ▒███▒▒███ ███▒▒███ ▒███▒▒███ 
+ ▒███ ▒███ ▒███  ▒███ ▒███ ▒███  ▒███ ▒███▒███ ▒███ ▒██████▒  
+ ▒███ ▒███ ▒███  ▒███ ▒███ ▒███  ▒███ ▒███▒███ ▒███ ▒███▒▒███ 
+ ████████  █████ █████▒███ █████ ████████ ▒▒██████  ████ █████
+▒▒▒▒▒▒▒▒  ▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▒▒ 
         ]],
         },
+      },
+    },
+  },
+  {
+    "isakbm/gitgraph.nvim",
+    -- Load on keypress to keep startup at 28ms 🚀
+    keys = {
+      {
+        "<leader>gl",
+        function()
+          require("gitgraph").draw({}, { all = true, max_count = 5000 })
+        end,
+        desc = "GitGraph - Draw",
+      },
+    },
+    opts = {
+      git_cmd = "git",
+      symbols = {
+        merge_commit = "",
+        commit = "",
+        merge_commit_end = "",
+        commit_end = "",
+      },
+      format = {
+        timestamp = "%H:%M:%S %d-%m-%Y",
+        fields = { "hash", "timestamp", "author", "branch_name", "tag" },
+      },
+      hooks = {
+        -- Checkdiff on selected commit
+        on_select_commit = function(commit)
+          print("Selected commit:", commit.hash)
+        end,
+        -- Check diff between range
+        on_select_range_commit = function(from, to)
+          print("Selected range:", from.hash, to.hash)
+        end,
       },
     },
   },
