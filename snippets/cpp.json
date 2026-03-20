@@ -1,0 +1,31 @@
+{
+  "C++ Competitive Programming Boilerplate": {
+    "prefix": "cp",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "",
+      "void solve() {",
+      "  $0",
+      "}",
+      "",
+      "int main() {",
+      "  ios::sync_with_stdio(false);",
+      "  cin.tie(NULL);",
+      "",
+      "#ifndef ONLINE_JUDGE",
+      "  freopen(\"input.txt\", \"r\", stdin);",
+      "  freopen(\"output.txt\", \"w\", stdout);",
+      "#endif",
+      "",
+      "  int q;",
+      "  cin >> q;",
+      "  while (q--) {",
+      "    solve();",
+      "  }",
+      "  return 0;",
+      "}"
+    ],
+    "description": "Inserts CP boilerplate"
+  }
+}
