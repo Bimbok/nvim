@@ -1,4 +1,164 @@
 return {
+  -- lua/plugins/kanagawa.lua
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   name = "kanagawa",
+  --   lazy = false, -- Ensure it loads during startup
+  --   priority = 1000, -- Load before other plugins
+  --   config = function()
+  --     require("kanagawa").setup({
+  --       compile = false, -- Enable compiling the colorscheme for faster startup
+  --       undercurl = true, -- Enable undercurls
+  --       commentStyle = { italic = true },
+  --       functionStyle = {},
+  --       keywordStyle = { italic = true },
+  --       statementStyle = { bold = true },
+  --       typeStyle = {},
+  --       transparent = true, -- Master switch for transparency
+  --       dimInactive = false, -- Do not dim inactive windows
+  --       terminalColors = true, -- Define vim.g.terminal_color_{0,17}
+  --
+  --       theme = "dragon", -- The darkest, highest-contrast variant
+  --       background = {
+  --         dark = "dragon",
+  --         light = "lotus",
+  --       },
+  --
+  --       colors = {
+  --         theme = {
+  --           all = {
+  --             ui = {
+  --               bg_gutter = "none", -- Remove the background of LineNr and fold columns
+  --             },
+  --           },
+  --         },
+  --       },
+  --
+  --       overrides = function(colors)
+  --         local theme = colors.theme
+  --         return {
+  --           -- Transparent Floating Windows and Borders
+  --           NormalFloat = { bg = "none" },
+  --           FloatBorder = { bg = "none", fg = theme.ui.special },
+  --           FloatTitle = { bg = "none", fg = theme.ui.special, bold = true },
+  --
+  --           -- Transparent Telescope (if you use it)
+  --           TelescopeNormal = { bg = "none" },
+  --           TelescopeBorder = { bg = "none", fg = theme.ui.special },
+  --           TelescopePromptNormal = { bg = "none" },
+  --           TelescopePromptBorder = { bg = "none", fg = theme.ui.special },
+  --           TelescopeTitle = { fg = theme.ui.special, bold = true },
+  --
+  --           -- Transparent NvimTree (if you use it)
+  --           NvimTreeNormal = { bg = "none" },
+  --           NvimTreeNormalNC = { bg = "none" },
+  --
+  --           -- High Contrast Tweaks
+  --           -- Making the visual selection punchy (using a wave blue)
+  --           Visual = { bg = theme.ui.bg_visual },
+  --           -- Cursor line distinct
+  --           CursorLine = { bg = theme.ui.bg_p1 },
+  --
+  --           -- Popup menu (completion, etc.)
+  --           Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+  --           PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+  --
+  --           -- Clear window separators
+  --           WinSeparator = { fg = theme.ui.bg_p1, bg = "none" },
+  --         }
+  --       end,
+  --     })
+  --
+  --     -- Setup must be called before loading
+  --     vim.cmd("colorscheme kanagawa-dragon")
+  --   end,
+  -- },
+
+  -- lua/plugins/rose-pine.lua
+  -- {
+  --   "rose-pine/neovim",
+  --   name = "rose-pine",
+  --   lazy = false, -- Ensure it loads during startup
+  --   priority = 1000, -- Load before other plugins to prevent flashes of unstyled text
+  --   config = function()
+  --     require("rose-pine").setup({
+  --       variant = "main", -- 'main' offers the most contrast out of the dark variants
+  --       dark_variant = "main",
+  --       dim_inactive_windows = false,
+  --       extend_background_behind_borders = true,
+  --
+  --       enable = {
+  --         terminal = true,
+  --         legacy_highlights = true,
+  --         migrations = true,
+  --       },
+  --
+  --       styles = {
+  --         bold = true,
+  --         italic = true,
+  --         transparency = true, -- Master switch for transparency
+  --       },
+  --
+  --       groups = {
+  --         border = "muted",
+  --         link = "iris",
+  --         panel = "surface",
+  --
+  --         error = "love",
+  --         hint = "iris",
+  --         info = "foam",
+  --         note = "pine",
+  --         todo = "rose",
+  --         warn = "gold",
+  --
+  --         git_add = "foam",
+  --         git_change = "rose",
+  --         git_delete = "love",
+  --         git_dirty = "rose",
+  --         git_ignore = "muted",
+  --         git_merge = "iris",
+  --         git_rename = "pine",
+  --         git_stage = "iris",
+  --         git_text = "rose",
+  --         git_untracked = "subtle",
+  --
+  --         h1 = "iris",
+  --         h2 = "foam",
+  --         h3 = "rose",
+  --         h4 = "gold",
+  --         h5 = "pine",
+  --         h6 = "foam",
+  --       },
+  --
+  --       highlight_groups = {
+  --         -- Force transparency on floating windows and borders
+  --         NormalFloat = { bg = "none" },
+  --         FloatBorder = { bg = "none", fg = "highlight_high" },
+  --
+  --         -- Telescope UI transparency (if you use it)
+  --         TelescopeNormal = { bg = "none" },
+  --         TelescopeBorder = { bg = "none", fg = "highlight_high" },
+  --         TelescopePromptNormal = { bg = "none" },
+  --
+  --         -- NvimTree transparency (if you use it)
+  --         NvimTreeNormal = { bg = "none" },
+  --         NvimTreeNormalNC = { bg = "none" },
+  --
+  --         -- Contrast and readability tweaks
+  --         Comment = { fg = "subtle", italic = true },
+  --         Visual = { bg = "highlight_med" }, -- Punchier visual selection
+  --         CursorLine = { bg = "highlight_low" }, -- Make the current line distinct
+  --         ColorColumn = { bg = "surface" },
+  --
+  --         -- VertSplit is deprecated in newer Neovim, using WinSeparator
+  --         WinSeparator = { fg = "highlight_high", bg = "none" },
+  --       },
+  --     })
+  --
+  --     vim.cmd("colorscheme rose-pine")
+  --   end,
+  -- },
+
   {
     "ellisonleao/gruvbox.nvim",
     name = "gruvbox",
@@ -26,7 +186,7 @@ return {
         contrast = "soft", -- can be "hard", "soft" or empty string
         palette_overrides = {},
         overrides = {},
-        dim_inactive = false,
+        dim_inactive = true,
         transparent_mode = true,
       })
       vim.cmd([[colorscheme gruvbox]])
