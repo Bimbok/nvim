@@ -211,6 +211,14 @@ return {
           TelescopePromptBorder = { fg = "#fabd2f", bg = "none" },
           TelescopePromptTitle = { fg = "#fabd2f", bg = "none", bold = true },
 
+          -- BufferLine transparency and colors
+          BufferLineFill = { bg = "none" },
+          BufferLineBackground = { bg = "none" },
+          BufferLineSeparator = { fg = "#3c3836", bg = "none" },
+          BufferLineSeparatorSelected = { fg = "#7c6f64", bg = "none" },
+          BufferLineBufferSelected = { bg = "none", fg = "#ebdbb2", bold = true },
+          BufferLineBufferVisible = { bg = "none", fg = "#928374" },
+
           -- Blink.cmp specific (Completion Menu)
           BlinkCmpMenu = { bg = "none", fg = "#ebdbb2" },
           BlinkCmpMenuBorder = { fg = "#7c6f64", bg = "none" },

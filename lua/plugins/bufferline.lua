@@ -15,10 +15,13 @@ return {
   },
   opts = {
     options = {
-      separator_style = { "", "" }, -- Use Nerd Font icons for rounded tabs
+      mode = "buffers",
+      separator_style = "padded_slope", -- Slant looks much better with transparency
       indicator = {
-        style = "underline", -- Use an underline for the active tab indicator
+        style = "none", -- Remove the underline for a cleaner look
       },
+      show_buffer_close_icons = false,
+      show_close_icon = false,
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore
