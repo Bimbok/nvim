@@ -25,15 +25,19 @@ return {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
         component_separators = { left = "", right = "" }, -- rounded separator
-        section_separators = { left = "", right = "" }, -- rounded seperator
+        section_separators = { left = "", right = "" },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_a = { { "mode", separator = { left = "", right = "" }, padding = { left = 0, right = 1 } } },
+        lualine_b = { { "branch", icon = "" } },
 
         lualine_c = {
-          LazyVim.lualine.root_dir(),
+          vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
+            color = { bg = "#3c3836", fg = "#ebdbb2" },
+            separator = { left = "" },
+            padding = { left = 1, right = 1 },
+          }),
           {
             "diagnostics",
             symbols = {
@@ -42,9 +46,18 @@ return {
               info = icons.diagnostics.Info,
               hint = icons.diagnostics.Hint,
             },
+            color = { bg = "#3c3836" },
           },
-          { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { LazyVim.lualine.pretty_path() },
+          {
+            "filetype",
+            icon_only = true,
+            separator = "",
+            padding = { left = 1, right = 0 },
+            color = { bg = "#3c3836" },
+          },
+          vim.tbl_extend("force", { LazyVim.lualine.pretty_path() }, {
+            color = { bg = "#3c3836", fg = "#ebdbb2" },
+          }),
         },
         lualine_x = {
           Snacks.profiler.status(),
@@ -96,9 +109,13 @@ return {
           { "location", padding = { left = 0, right = 1 } },
         },
         lualine_z = {
-          function()
-            return " " .. os.date("%R")
-          end,
+          {
+            function()
+              return " " .. os.date("%R")
+            end,
+            separator = { left = "", right = "" },
+            padding = { left = 1, right = 0 },
+          },
         },
       },
       extensions = { "neo-tree", "lazy", "fzf" },
@@ -121,6 +138,9 @@ return {
         cond = function()
           return vim.b.trouble_lualine ~= false and symbols.has()
         end,
+        color = { bg = "#3c3836", fg = "#ebdbb2" },
+        separator = { right = "" },
+        padding = { left = 1, right = 1 },
       })
     end
 

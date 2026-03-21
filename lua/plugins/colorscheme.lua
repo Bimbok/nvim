@@ -184,8 +184,55 @@ return {
         invert_intend_guides = false,
         inverse = true, -- invert background for search, diffs, statuslines
         contrast = "soft", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
+        palette_overrides = {
+          bright_green = "#b8bb26",
+          bright_red = "#fb4934",
+          bright_yellow = "#fabd2f",
+          bright_blue = "#83a598",
+          bright_purple = "#d3869b",
+          bright_aqua = "#8ec07c",
+          bright_orange = "#fe8019",
+          neutral_orange = "#d65d0e",
+        },
+        overrides = {
+          -- Unified Float UI
+          NormalFloat = { bg = "none" },
+          FloatBorder = { fg = "#7c6f64", bg = "none" },
+          FloatTitle = { fg = "#ebdbb2", bg = "none", bold = true },
+
+          -- Noice specific
+          NoiceCmdlinePopup = { bg = "none" },
+          NoiceCmdlinePopupBorder = { fg = "#fabd2f", bg = "none" },
+          NoiceCmdlineIcon = { fg = "#fabd2f" },
+
+          -- Telescope specific
+          TelescopeNormal = { bg = "none" },
+          TelescopeBorder = { fg = "#7c6f64", bg = "none" },
+          TelescopePromptBorder = { fg = "#fabd2f", bg = "none" },
+          TelescopePromptTitle = { fg = "#fabd2f", bg = "none", bold = true },
+
+          -- Blink.cmp specific (Completion Menu)
+          BlinkCmpMenu = { bg = "none", fg = "#ebdbb2" },
+          BlinkCmpMenuBorder = { fg = "#7c6f64", bg = "none" },
+          BlinkCmpDoc = { bg = "none", fg = "#ebdbb2" },
+          BlinkCmpDocBorder = { fg = "#7c6f64", bg = "none" },
+          BlinkCmpSignatureHelp = { bg = "none", fg = "#ebdbb2" },
+          BlinkCmpSignatureHelpBorder = { fg = "#7c6f64", bg = "none" },
+
+          -- Custom colors for types/kinds in the menu
+          BlinkCmpKindFunction = { fg = "#b8bb26", bg = "none" },
+          BlinkCmpKindMethod = { fg = "#b8bb26", bg = "none" },
+          BlinkCmpKindVariable = { fg = "#83a598", bg = "none" },
+          BlinkCmpKindKeyword = { fg = "#fb4934", bg = "none" },
+          BlinkCmpKindClass = { fg = "#fabd2f", bg = "none" },
+
+          -- Subtle UI elements
+          WinSeparator = { fg = "#3c3836" },
+          CursorLine = { bg = "#282828" },
+          MsgArea = { bg = "none" },
+          StatusLine = { bg = "none" },
+          StatusLineNC = { bg = "none" },
+        },
         dim_inactive = false,
         transparent_mode = true,
       })

@@ -31,35 +31,67 @@ return {
     config = function()
       require("noice").setup({
         lsp = {
-          progress = {
-            enabled = true,
-          },
+          progress = { enabled = true },
           signature = {
             enabled = true,
+            auto_open = {
+              enabled = true,
+              trigger = true,
+              luasnip = true,
+              throttle = 50,
+            },
+            view = "hover", -- use the same view as hover for signatures
           },
           hover = {
             enabled = true,
+            view = "hover", -- specifically ensure it uses the 'hover' view
           },
         },
-        messages = {
-          enabled = true,
-        },
-        notify = {
-          enabled = true,
-        },
+        messages = { enabled = true },
+        notify = { enabled = true },
         views = {
-          mini = {
-            win_options = {
-              winblend = 10,
+          hover = {
+            border = {
+              style = "rounded",
+              padding = { 0, 1 },
             },
+            win_options = { winblend = 0 },
+            size = { max_width = 80 },
+          },
+          mini = {
+            win_options = { winblend = 0 },
+          },
+          cmdline_popup = {
+            border = {
+              style = "rounded",
+              padding = { 0, 1 },
+            },
+            position = { row = 5, col = "50%" },
+            size = { width = 60, height = "auto" },
+          },
+          popupmenu = {
+            relative = "editor",
+            position = { row = 8, col = "50%" },
+            size = { width = 60, height = 10 },
+            border = { style = "rounded", padding = { 0, 1 } },
+            win_options = { winhighlight = { Normal = "NormalFloat", FloatBorder = "NoiceCmdlinePopupBorder" } },
           },
         },
         cmdline = {
           enabled = true,
           view = "cmdline_popup",
+          format = {
+            cmdline = { pattern = "^:", icon = "", lang = "vim" },
+            search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+            search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+            filter = { pattern = "^:%s*!", icon = "", lang = "bash" },
+            lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
+            help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+          },
         },
         popupmenu = {
           enabled = true,
+          backend = "nui",
         },
       })
     end,
@@ -69,7 +101,20 @@ return {
     {
       "akinsho/toggleterm.nvim",
       version = "*",
-      config = true,
+      opts = {
+        size = 20,
+        open_mapping = [[<c-\>]],
+        shade_filetypes = {},
+        shade_terminals = true,
+        shading_factor = 2,
+        start_in_insert = true,
+        persist_size = true,
+        direction = "float",
+        float_opts = {
+          border = "curved",
+          winblend = 0,
+        },
+      },
     },
   },
   {
@@ -231,6 +276,7 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      bigfile = { enabled = true },
       dashboard = {
         enabled = true,
         preset = {
@@ -245,7 +291,27 @@ return {
 ▒▒▒▒▒▒▒▒  ▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▒▒ 
         ]],
         },
+        sections = {
+          { section = "header" },
+          { section = "keys", gap = 1, padding = 1 },
+          { section = "startup" },
+        },
       },
+      indent = {
+        enabled = true,
+        char = "│",
+        scope = {
+          enabled = true,
+          char = "┃",
+          underline = false,
+        },
+      },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
     },
   },
   {
