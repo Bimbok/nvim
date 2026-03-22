@@ -16,18 +16,31 @@ return {
   opts = {
     options = {
       mode = "buffers",
-      separator_style = "padded_slope", -- Slant looks much better with transparency
+      separator_style = "thin",
       indicator = {
-        style = "none", -- Remove the underline for a cleaner look
+        style = "icon",
+        icon = "▎",
       },
       show_buffer_close_icons = false,
       show_close_icon = false,
+      hover = {
+        enabled = true,
+        delay = 120,
+        reveal = { "close" },
+      },
+
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore
       right_mouse_command = function(n) Snacks.bufdelete(n) end,
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,
+      numbers = "ordinal",
+      max_name_length = 24,
+      max_prefix_length = 18,
+      tab_size = 20,
+      enforce_regular_tabs = false,
+
       diagnostics_indicator = function(_, _, diag)
         local icons = LazyVim.config.icons.diagnostics
         local ret = (diag.error and icons.Error .. diag.error .. " " or "")
@@ -48,6 +61,9 @@ return {
       ---@param opts bufferline.IconFetcherOpts
       get_element_icon = function(opts)
         return LazyVim.config.icons.ft[opts.filetype]
+      end,
+      custom_filter = function(buf_number, _)
+        return vim.bo[buf_number].buftype ~= "quickfix"
       end,
     },
   },

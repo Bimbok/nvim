@@ -53,18 +53,18 @@ return {
           hover = {
             border = {
               style = "rounded",
-              padding = { 0, 1 },
+              padding = { 0, 2 },
             },
             win_options = { winblend = 0 },
             size = { max_width = 80 },
           },
           mini = {
-            win_options = { winblend = 0 },
+            win_options = { winblend = 8 },
           },
           cmdline_popup = {
             border = {
               style = "rounded",
-              padding = { 0, 1 },
+              padding = { 0, 2 },
             },
             position = { row = 5, col = "50%" },
             size = { width = 60, height = "auto" },
@@ -73,7 +73,7 @@ return {
             relative = "editor",
             position = { row = 8, col = "50%" },
             size = { width = 60, height = 10 },
-            border = { style = "rounded", padding = { 0, 1 } },
+            border = { style = "rounded", padding = { 0, 2 } },
             win_options = { winhighlight = { Normal = "NormalFloat", FloatBorder = "NoiceCmdlinePopupBorder" } },
           },
         },
@@ -111,8 +111,19 @@ return {
         persist_size = true,
         direction = "float",
         float_opts = {
-          border = "curved",
+          border = "rounded",
           winblend = 0,
+          winhighlight = {
+            Normal = "NormalFloat",
+            NormalFloat = "NormalFloat",
+            FloatBorder = "FloatBorder",
+          },
+          width = function()
+            return math.floor(vim.o.columns * 0.92)
+          end,
+          height = function()
+            return math.floor(vim.o.lines * 0.82)
+          end,
         },
       },
     },
@@ -267,10 +278,11 @@ return {
 
     opts = {
       cursor_color = "#d3869b",
-      stiffness = 0.6,
-      trailing_stiffness = 0.5,
+      stiffness = 0.75,
+      trailing_stiffness = 0.72,
       distance_stop_animating = 0.5,
       hide_target_hack = false,
+      gamma = 1,
     },
   },
   {
@@ -281,14 +293,9 @@ return {
         enabled = true,
         preset = {
           header = [[
- █████      ███                  █████              █████     
-▒▒███      ▒▒▒                  ▒▒███              ▒▒███      
- ▒███████  ████  █████████████   ▒███████   ██████  ▒███ █████
- ▒███▒▒███▒▒███ ▒▒███▒▒███▒▒███  ▒███▒▒███ ███▒▒███ ▒███▒▒███ 
- ▒███ ▒███ ▒███  ▒███ ▒███ ▒███  ▒███ ▒███▒███ ▒███ ▒██████▒  
- ▒███ ▒███ ▒███  ▒███ ▒███ ▒███  ▒███ ▒███▒███ ▒███ ▒███▒▒███ 
- ████████  █████ █████▒███ █████ ████████ ▒▒██████  ████ █████
-▒▒▒▒▒▒▒▒  ▒▒▒▒▒ ▒▒▒▒▒ ▒▒▒ ▒▒▒▒▒ ▒▒▒▒▒▒▒▒   ▒▒▒▒▒▒  ▒▒▒▒ ▒▒▒▒▒ 
+░█▀▀▄ ░▀░ █▀▄▀█ █▄▄▄ ▄▀▀▄ █░█
+░█▀▀▄ ▀█▀ █░▀░█ █▄█░ █░░█ █▀▄
+░▀▀▀░ ▀▀▀ ▀░░░▀ ▀░▀░ ░▀▀░ ▀░▀
         ]],
         },
         sections = {

@@ -165,6 +165,25 @@ return {
     lazy = false, -- load immediately
     priority = 1000, -- make sure it loads before other plugins
     config = function()
+      local palette = {
+        bg0 = "#101010",
+        bg1 = "#161616",
+        bg2 = "#202020",
+        bg3 = "#2a2a2a",
+        fg0 = "#fbf1c7",
+        fg1 = "#f2e5bc",
+        fg2 = "#ddc7a1",
+        gray = "#a89984",
+        brown = "#928374",
+        red = "#fb4934",
+        orange = "#fe8019",
+        yellow = "#fabd2f",
+        green = "#b8bb26",
+        aqua = "#8ec07c",
+        blue = "#83a598",
+        purple = "#d3869b",
+      }
+
       require("gruvbox").setup({
         terminal_colors = true,
         undercurl = true,
@@ -183,7 +202,7 @@ return {
         invert_tabline = false,
         invert_intend_guides = false,
         inverse = true, -- invert background for search, diffs, statuslines
-        contrast = "soft", -- can be "hard", "soft" or empty string
+        contrast = "hard", -- can be "hard", "soft" or empty string
         palette_overrides = {
           bright_green = "#b8bb26",
           bright_red = "#fb4934",
@@ -214,7 +233,7 @@ return {
           -- BufferLine transparency and colors
           BufferLineFill = { bg = "none" },
           BufferLineBackground = { bg = "none" },
-          BufferLineSeparator = { fg = "#3c3836", bg = "none" },
+          BufferLineSeparator = { fg = "#fb4934", bg = "none" },
           BufferLineSeparatorSelected = { fg = "#7c6f64", bg = "none" },
           BufferLineBufferSelected = { bg = "none", fg = "#ebdbb2", bold = true },
           BufferLineBufferVisible = { bg = "none", fg = "#928374" },
@@ -240,6 +259,13 @@ return {
           MsgArea = { bg = "none" },
           StatusLine = { bg = "none" },
           StatusLineNC = { bg = "none" },
+
+          SnacksDashboardHeader = { fg = palette.orange, bold = true },
+          SnacksDashboardDesc = { fg = palette.fg1 },
+          SnacksDashboardKey = { fg = palette.yellow, bold = true },
+          SnacksDashboardIcon = { fg = palette.green },
+          SnacksDashboardSpecial = { fg = palette.blue },
+          SnacksDashboardFooter = { fg = palette.gray, italic = true },
         },
         dim_inactive = false,
         transparent_mode = true,

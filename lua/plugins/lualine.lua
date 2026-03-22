@@ -20,6 +20,15 @@ return {
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
+    local colors = {
+      fg = "#fbf1c7",
+      muted = "#a89984",
+      orange = "#fe8019",
+      yellow = "#fabd2f",
+      green = "#b8bb26",
+      blue = "#83a598",
+      red = "#fb4934",
+    }
     local opts = {
       options = {
         theme = "auto",
@@ -30,7 +39,7 @@ return {
       },
       sections = {
         lualine_a = { { "mode", separator = { left = "", right = "" }, padding = { left = 0, right = 1 } } },
-        lualine_b = { { "branch", icon = "" } },
+        lualine_b = { { "branch", icon = "", color = { fg = colors.yellow, gui = "bold" } } },
 
         lualine_c = {
           vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
@@ -114,6 +123,7 @@ return {
               return " " .. os.date("%R")
             end,
             separator = { left = "", right = "" },
+            color = { bg = colors.orange, gui = "bold" },
             padding = { left = 1, right = 0 },
           },
         },
