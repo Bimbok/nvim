@@ -38,7 +38,7 @@ return {
         disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
       },
       sections = {
-        lualine_a = { { "mode", separator = { left = "", right = "" }, padding = { left = 0, right = 1 } } },
+        lualine_a = { { "mode", separator = { left = "", right = "" }, padding = { left = 1, right = 1 } } },
         lualine_b = { { "branch", icon = "", color = { fg = colors.yellow, gui = "bold" } } },
 
         lualine_c = {
@@ -124,7 +124,7 @@ return {
             end,
             separator = { left = "", right = "" },
             color = { bg = colors.orange, gui = "bold" },
-            padding = { left = 1, right = 0 },
+            padding = { left = 1, right = 1 },
           },
         },
       },

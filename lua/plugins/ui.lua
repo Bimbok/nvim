@@ -10,15 +10,20 @@ return {
     -- opts = {} -- You can add configuration options here if you want
   },
   { "github/copilot.vim", event = "InsertEnter" },
+
   {
     "karb94/neoscroll.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      -- All these keys are optional, but this is a nice default
-      easing_function = "quintic", -- "linear", "quadratic", "cubic", "quintic"
-      hide_cursor = true,
-      stop_eof = true,
-    },
+    event = "VeryLazy",
+    config = function()
+      require("neoscroll").setup({
+        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb" },
+        easing_function = "quintic",
+        hide_cursor = true,
+        stop_eof = true,
+        respect_scrolloff = false,
+        cursor_scrolls_alone = true,
+      })
+    end,
   },
 
   {
