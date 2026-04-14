@@ -19,6 +19,19 @@ return {
       vim.keymap.set("n", "<leader>mt", require("render-markdown").toggle, { desc = "Toggle Render Markdown" })
     end,
   },
+  {
+    "Thiago4532/mdmath.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    ft = { "markdown", "rmd", "org" },
+    build = ":MdMath build",
+    opts = {
+      filetypes = { "markdown", "rmd", "org" },
+      theme = "dark",
+      foreground_color = "#ebdbb2",
+    },
+  },
   -- 1. The Viewer (Adds alignment and borders)
   {
     "hat0uma/csvview.nvim",

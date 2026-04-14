@@ -2,21 +2,51 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- toggle neo-tree
--- vim.keymap.set("n", "<leader>\\", function()
---   vim.cmd("Neotree toggle right")
--- end, { desc = "Toggle Neo-tree" })
+function RunCurrentFile()
+  local file = vim.fn.expand("%:p")
+  local filename = vim.fn.expand("%:t:r") -- filename without extension
+  local ext = vim.fn.expand("%:e")
+  local cmd = ""
 
--- floating terminal
-vim.keymap.set("n", "<leader>'", function()
-  vim.cmd("ToggleTerm direction=float")
-end, { desc = "Toggle floating terminal" })
+  if ext == "c" then
+    cmd = string.format("gcc '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
+  elseif ext == "cpp" then
+    cmd = string.format("g++ '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
+  elseif ext == "py" then
+    cmd = string.format("python3 '%s'", file)
+  elseif ext == "js" then
+    cmd = string.format("node '%s'", file)
+  elseif ext == "java" then
+    cmd = string.format("java '%s'", file)
+  elseif ext == "sh" then
+    cmd = string.format("bash '%s'", file)
+  elseif ext == "go" then
+    cmd = string.format("go run '%s'", file)
+  elseif ext == "asm" then
+    cmd = string.format(
+      "nasm -f elf64 '%s' -o /tmp/%s.o && ld /tmp/%s.o -o /tmp/%s && /tmp/%s",
+      file,
+      filename,
+      filename,
+      filename,
+      filename
+    )
+  elseif ext == "rs" then
+    cmd = string.format("rustc '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
+  else
+    vim.notify("Unsupported file type: " .. ext, vim.log.levels.ERROR)
+    return
+  end
 
+  require("toggleterm.terminal").Terminal
+    :new({
+      cmd = cmd,
+      direction = "float",
+      close_on_exit = false,
+      hidden = true,
+      cwd = vim.fn.getcwd(),
+    })
+    :toggle()
+end
 -- run current file by <leader>rr
-vim.keymap.set("n", "<leader>rr", RunCurrentFile, { noremap = true, silent = true })
-
--- by using <leader>jf malual formatting.
-vim.keymap.set("n", "<leader>jf", function()
-  require("conform").format({ async = true, lsp_fallback = true, timeout_ms = 1000 })
-  vim.notify("Fomatted", vim.log.levels.INFO)
-end, { desc = "Manual format" })
+vim.keymap.set("n", "<leader>cL", RunCurrentFile, { noremap = true, silent = true, desc = " Run Current File" })

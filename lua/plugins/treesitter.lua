@@ -13,7 +13,7 @@ return {
     end)
   end,
   lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-  event = { "LazyFile", "VeryLazy" },
+  event = { "LazyFile" },
   cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
   opts_extend = { "ensure_installed" },
   ---@class lazyvim.TSConfig: TSConfig

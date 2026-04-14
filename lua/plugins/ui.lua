@@ -1,5 +1,43 @@
 return {
   {
+    "stevearc/conform.nvim",
+    lazy = true,
+    cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>jf",
+        function()
+          require("conform").format({ async = true, lsp_fallback = true, timeout_ms = 1000 })
+          vim.notify("Formatted", vim.log.levels.INFO)
+        end,
+        mode = "n",
+        desc = "Manual format",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        python = { "isort", "black" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        json = { "prettier" },
+        html = { "prettier" },
+        css = { "prettier" },
+        markdown = { "prettier" },
+
+        ["_"] = { "trim_whitespace" },
+      },
+
+      format_on_save = false,
+    },
+  },
+  {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
@@ -106,6 +144,10 @@ return {
     {
       "akinsho/toggleterm.nvim",
       version = "*",
+      keys = {
+        { "<leader>'", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal" },
+        { "<c-\\>", "<cmd>ToggleTerm<cr>", mode = { "n", "t" }, desc = "Toggle terminal" },
+      },
       opts = {
         size = 20,
         open_mapping = [[<c-\>]],
@@ -135,7 +177,8 @@ return {
   },
   {
     "pocco81/auto-save.nvim",
-    trigger_event = { "InsertLeave", "TextChanged" },
+    event = "LazyFile",
+    trigger_event = { "InsertLeave", "FocusLost", "TextChanged" },
     opts = {
       enabled = true,
       execution_message = {
@@ -145,7 +188,7 @@ return {
         dim = 0.18,
         cleaning_interval = 1250,
       },
-      debounce_delay = 135,
+      debounce_delay = 1000,
       condition = function(buf)
         local fn = vim.fn
         local utils = require("auto-save.utils.data")
@@ -159,7 +202,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       current_line_blame = true,
       current_line_blame_opts = {
@@ -181,6 +224,24 @@ return {
         tailwind = true,
         mode = "background",
       })
+    end,
+  },
+
+  {
+    "uga-rosa/ccc.nvim",
+    keys = {
+      { "<leader>cp", "<cmd>CccPick<cr>", desc = "Open Color Picker" },
+    },
+    opts = {
+      -- This ensures the picker shows up with the right colors
+      highlighter = {
+        auto_enable = true,
+        lsp = true,
+      },
+    },
+    config = function(_, opts)
+      local ccc = require("ccc")
+      ccc.setup(opts)
     end,
   },
 
@@ -274,7 +335,7 @@ return {
   },
   {
     "chentoast/marks.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "LazyFile",
     opts = {},
   },
   {
@@ -282,7 +343,7 @@ return {
     event = "VeryLazy",
 
     opts = {
-      cursor_color = "#d3869b",
+      cursor_color = "#d5489bfe01",
       stiffness = 0.75,
       trailing_stiffness = 0.72,
       distance_stop_animating = 0.5,
@@ -359,6 +420,83 @@ return {
         on_select_range_commit = function(from, to)
           print("Selected range:", from.hash, to.hash)
         end,
+      },
+    },
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    event = "LazyFile",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          vim.notify = require("notify")
+        end,
+      },
+    },
+    opts = {
+      max_count = 5,
+      max_time = 500,
+      restriction_mode = "block",
+      allow_different_key = true,
+      hint = true,
+      notification = true,
+      disable_mouse = true,
+    },
+  },
+  {
+    "toppair/reach.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    -- This guarantees the plugin won't load until you press <leader>rb or <leader>rm
+    keys = {
+      {
+        "<leader>rb",
+        function()
+          require("reach").buffers({
+            handle = "auto",
+            show_icons = true,
+            show_current = true,
+            show_modified = true,
+          })
+        end,
+        desc = "Reach: Open Buffers",
+      },
+      {
+        "<leader>rm",
+        function()
+          require("reach").marks({})
+        end,
+        desc = "Reach: Open Marks",
+      },
+    },
+    opts = {
+      notifications = true,
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "LazyFile",
+    opts = {
+      enable = true,
+      max_lines = 3, -- Limits the sticky header to 3 lines so it doesn't crowd your screen
+      min_window_height = 0,
+      line_numbers = true,
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = "outer", -- Discards outer context if max_lines is exceeded
+      mode = "cursor", -- Calculates context based on where your cursor is
+      separator = "-", -- Adds a clean visual separator line below the sticky header
+      zindex = 20,
+    },
+    keys = {
+      {
+        "<leader>cx",
+        function()
+          require("treesitter-context").toggle()
+        end,
+        desc = "Toggle Treesitter Context",
       },
     },
   },

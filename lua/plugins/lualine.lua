@@ -20,15 +20,6 @@ return {
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
-    local colors = {
-      fg = "#fbf1c7",
-      muted = "#a89984",
-      orange = "#fe8019",
-      yellow = "#fabd2f",
-      green = "#b8bb26",
-      blue = "#83a598",
-      red = "#fb4934",
-    }
     local opts = {
       options = {
         theme = "auto",
@@ -39,11 +30,10 @@ return {
       },
       sections = {
         lualine_a = { { "mode", separator = { left = "", right = "" }, padding = { left = 1, right = 1 } } },
-        lualine_b = { { "branch", icon = "", color = { fg = colors.yellow, gui = "bold" } } },
+        lualine_b = { { "branch", icon = "", color = { gui = "bold" } } },
 
         lualine_c = {
           vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
-            color = { bg = "#3c3836", fg = "#ebdbb2" },
             separator = { left = "" },
             padding = { left = 1, right = 1 },
           }),
@@ -55,18 +45,14 @@ return {
               info = icons.diagnostics.Info,
               hint = icons.diagnostics.Hint,
             },
-            color = { bg = "#3c3836" },
           },
           {
             "filetype",
             icon_only = true,
             separator = "",
             padding = { left = 1, right = 0 },
-            color = { bg = "#3c3836" },
           },
-          vim.tbl_extend("force", { LazyVim.lualine.pretty_path() }, {
-            color = { bg = "#3c3836", fg = "#ebdbb2" },
-          }),
+          vim.tbl_extend("force", { LazyVim.lualine.pretty_path() }, {}),
         },
         lualine_x = {
           Snacks.profiler.status(),
@@ -123,7 +109,7 @@ return {
               return " " .. os.date("%R")
             end,
             separator = { left = "", right = "" },
-            color = { bg = colors.orange, gui = "bold" },
+            color = { gui = "bold" },
             padding = { left = 1, right = 1 },
           },
         },
@@ -148,7 +134,6 @@ return {
         cond = function()
           return vim.b.trouble_lualine ~= false and symbols.has()
         end,
-        color = { bg = "#3c3836", fg = "#ebdbb2" },
         separator = { right = "" },
         padding = { left = 1, right = 1 },
       })
