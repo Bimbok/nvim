@@ -63,7 +63,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        clangd = {},
         lua_ls = {
           mason = false,
         },

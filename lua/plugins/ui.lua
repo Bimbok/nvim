@@ -47,8 +47,6 @@ return {
     event = "VeryLazy", -- Load it after startup
     -- opts = {} -- You can add configuration options here if you want
   },
-  { "github/copilot.vim", event = "InsertEnter" },
-
   {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",
@@ -389,7 +387,6 @@ return {
   },
   {
     "isakbm/gitgraph.nvim",
-    -- Load on keypress to keep startup at 28ms 🚀
     keys = {
       {
         "<leader>gl",
@@ -458,7 +455,7 @@ return {
           require("reach").buffers({
             handle = "auto",
             show_icons = true,
-            show_current = true,
+            show_current = false,
             show_modified = true,
           })
         end,
@@ -499,5 +496,36 @@ return {
         desc = "Toggle Treesitter Context",
       },
     },
+  },
+  {
+    "mbbill/undotree",
+    keys = { { "<leader>uu", vim.cmd.UndotreeToggle, desc = "Toggle UndoTree" } },
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    event = "LazyFile",
+    config = function()
+      local rainbow_delimiters = require("rainbow-delimiters")
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+          vim = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      }
+    end,
   },
 }
