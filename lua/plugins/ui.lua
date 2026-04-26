@@ -244,34 +244,6 @@ return {
   },
 
   {
-    "mikavilpas/yazi.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-
-    cmd = { "Yazi" },
-    keys = {
-      { "<leader>-", "<cmd>Yazi<cr>", desc = "Yazi (Current File)" },
-      { "<leader>cw", "<cmd>Yazi cwd<cr>", desc = "Yazi (Working Dir)" },
-      { "<c-up>", "<cmd>Yazi toggle<cr>", desc = "Resume Yazi" },
-    },
-
-    opts = {
-      open_for_directories = false,
-      highlight_hovered_buffers_in_same_window = true,
-      keymaps = {
-        show_help = "<f1>",
-      },
-
-      floating_window_scaling_factor = 0.8,
-      yazi_floating_window_winblend = 0, -- 0 = Solid (Better for images)
-    },
-
-    init = function()
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-    end,
-  },
-
-  {
     "folke/flash.nvim",
     keys = {
       {
