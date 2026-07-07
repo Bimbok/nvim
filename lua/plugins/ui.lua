@@ -383,6 +383,19 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
+      zen = {
+        enabled = true,
+        toggles = {
+          dim = false,
+        },
+        win = {
+          width = 100,
+        },
+      },
+    },
+    keys = {
+      { "<leader>z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
+      { "<leader>Z", function() require("snacks").zen.zoom() end, desc = "Toggle Zoom Mode" },
     },
   },
   {

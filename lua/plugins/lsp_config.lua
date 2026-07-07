@@ -2,15 +2,52 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
-      file_types = { "markdown", "Avante" },
+      file_types = { "markdown", "Avante", "codecompanion", "rmd", "org" },
+      render_modes = { "n", "c", "t", "v" },
+      heading = {
+        sign = true,
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+        position = "overlay",
+        width = { "full", "block" },
+        border = { true, true, false, false, false, false },
+        left_margin = 0,
+        left_pad = 1,
+        right_pad = 2,
+      },
       code = {
         sign = false,
         width = "block",
-        right_pad = 1,
+        left_pad = 2,
+        right_pad = 4,
+        border = "thin",
       },
-      heading = {
-        sign = false,
-        icons = {}, -- clear icons if you want a clean look
+      checkbox = {
+        enabled = true,
+        unchecked = { icon = "󰄱 " },
+        checked = { icon = " " },
+        custom = {
+          todo = { raw = "[-]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo" },
+          doing = { raw = "[/]", rendered = "󰗢 ", highlight = "RenderMarkdownTodo" },
+          important = { raw = "[!]", rendered = "󰀪 ", highlight = "RenderMarkdownWarn" },
+        },
+      },
+      indent = {
+        enabled = true,
+        per_level = 2,
+        skip_level = 1,
+      },
+      pipe_table = {
+        enabled = true,
+        preset = "round",
+        style = "full",
+        cell = "padded",
+        padding = 1,
+      },
+      link = {
+        enabled = true,
+        footnote = { icon = "󰌷 " },
+        web = { icon = "󰖟 " },
+        wiki = { icon = "󱗖 " },
       },
     },
     ft = { "markdown", "norg", "rmd", "org" },
