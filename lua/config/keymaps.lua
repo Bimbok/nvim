@@ -10,7 +10,7 @@ function RunCurrentFile()
 
   if ext == "c" then
     cmd = string.format("gcc '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
-  elseif ext == "cpp" then
+  elseif ext == "cpp" or ext == "cc" then
     cmd = string.format("g++ '%s' -o /tmp/%s && /tmp/%s", file, filename, filename)
   elseif ext == "py" then
     cmd = string.format("python3 '%s'", file)

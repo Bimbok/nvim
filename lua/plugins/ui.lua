@@ -341,12 +341,17 @@ return {
     event = "VeryLazy",
 
     opts = {
-      cursor_color = "#d5489bfe01",
-      stiffness = 0.75,
-      trailing_stiffness = 0.72,
-      distance_stop_animating = 0.5,
-      hide_target_hack = false,
-      gamma = 1,
+      cursor_color = "#fabd2f",
+      stiffness = 0.4,
+      trailing_stiffness = 0.15,
+      trailing_exponent = 0.1,
+      distance_stop_animating = 0.1,
+      gamma = 0.8,
+
+      hide_target_hack = true,
+
+      legacy_computing_symbols_support = true,
+      transparent_bg_fallback_color = "#282828",
     },
   },
   {
@@ -394,8 +399,20 @@ return {
       },
     },
     keys = {
-      { "<leader>z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
-      { "<leader>Z", function() require("snacks").zen.zoom() end, desc = "Toggle Zoom Mode" },
+      {
+        "<leader>z",
+        function()
+          require("snacks").zen()
+        end,
+        desc = "Toggle Zen Mode",
+      },
+      {
+        "<leader>Z",
+        function()
+          require("snacks").zen.zoom()
+        end,
+        desc = "Toggle Zoom Mode",
+      },
     },
   },
   {
@@ -539,6 +556,21 @@ return {
           "RainbowDelimiterCyan",
         },
       }
+    end,
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup({})
+    end,
+  },
+  {
+    "rachartier/tiny-glimmer.nvim",
+    event = "VeryLazy",
+    priority = 10, -- Low priority to catch other plugins' keybindings
+    config = function()
+      require("tiny-glimmer").setup()
     end,
   },
 }

@@ -16,7 +16,7 @@ return {
   opts = {
     options = {
       mode = "buffers",
-      separator_style = "thin",
+      separator_style = "slope",
       indicator = {
         style = "icon",
         icon = "▎",
@@ -38,7 +38,7 @@ return {
       numbers = "ordinal",
       max_name_length = 24,
       max_prefix_length = 18,
-      tab_size = 20,
+      tab_size = 28,
       enforce_regular_tabs = false,
 
       diagnostics_indicator = function(_, _, diag)
@@ -48,12 +48,7 @@ return {
         return vim.trim(ret)
       end,
       offsets = {
-        {
-          filetype = "neo-tree",
-          text = "Neo-tree",
-          highlight = "Directory",
-          text_align = "left",
-        },
+        {},
         {
           filetype = "snacks_layout_box",
         },

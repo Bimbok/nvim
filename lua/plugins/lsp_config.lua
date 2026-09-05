@@ -106,6 +106,7 @@ return {
         bashls = {
           mason = false,
         },
+        fish_lsp = {},
       },
     },
   },

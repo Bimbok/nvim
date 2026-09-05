@@ -24,6 +24,8 @@ return {
     folds = { enable = true },
     ensure_installed = {
       "bash",
+      "fish",
+      "zsh",
       "c",
       "cpp",
       "asm",
